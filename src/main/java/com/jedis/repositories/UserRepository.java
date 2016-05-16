@@ -16,5 +16,6 @@ import com.jedis.entities.User;
 @Transactional
 public interface UserRepository extends CrudRepository<User, Long> {
 	
-	public List<User> findAll();
+	List<User> findAll();
+
 }

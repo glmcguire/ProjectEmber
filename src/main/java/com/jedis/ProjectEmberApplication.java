@@ -17,6 +17,8 @@ public class ProjectEmberApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(ProjectEmberApplication.class, args);
+		JedisTest jdTest = new JedisTest();
+		jdTest.copyDB();
 	}
 	
 	//TODO Jedis connection to come. 

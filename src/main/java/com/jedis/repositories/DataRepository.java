@@ -1,7 +1,5 @@
 package com.jedis.repositories;
 
-import java.util.List;
-
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,5 +14,5 @@ import com.jedis.entities.Data;
 @Transactional
 public interface DataRepository extends CrudRepository<Data, Long> {
 
-	public List<Data> findAll();
+//	public List<Data> findAll();
 }
