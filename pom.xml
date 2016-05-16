@@ -52,11 +52,6 @@
 			<artifactId>jedis</artifactId>
 			<version>${jedis.version}</version><!--$NO-MVN-MAN-VER$ -->
 		</dependency>
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-core</artifactId>
-			<version>5.1.0.Final</version><!--$NO-MVN-MAN-VER$ -->
-		</dependency>
 
 
 	</dependencies>

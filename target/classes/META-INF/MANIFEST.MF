@@ -1,9 +1,9 @@
 Manifest-Version: 1.0
 Implementation-Title: ProjectEmber
 Implementation-Version: 0.0.1-SNAPSHOT
-Built-By: FTP17
+Built-By: gary
 Implementation-Vendor-Id: ProjectEmber
-Build-Jdk: 1.8.0_91
+Build-Jdk: 1.8.0_72
 Created-By: Maven Integration for Eclipse
 Implementation-Vendor: Pivotal Software, Inc.
 
