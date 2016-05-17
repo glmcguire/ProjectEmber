@@ -23,17 +23,17 @@ DROP TABLE IF EXISTS `data`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `data` (
-  `dataId` int(11) NOT NULL AUTO_INCREMENT,
+  `data_id` int(11) NOT NULL AUTO_INCREMENT,
   `user` int(11) DEFAULT NULL,
-  `timeCreated` datetime DEFAULT NULL,
+  `time_created` datetime DEFAULT NULL,
   `startdate` date DEFAULT NULL,
   `text` varchar(140) DEFAULT NULL,
   `flag` bit(1) DEFAULT NULL,
   `number` double DEFAULT NULL,
-  PRIMARY KEY (`dataId`),
-  UNIQUE KEY `dataId_UNIQUE` (`dataId`),
+  PRIMARY KEY (`data_id`),
+  UNIQUE KEY `data_id_UNIQUE` (`data_id`),
   KEY `userKey_idx` (`user`),
-  CONSTRAINT `userKey` FOREIGN KEY (`user`) REFERENCES `user` (`userId`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `userKey` FOREIGN KEY (`user`) REFERENCES `user` (`user_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -55,12 +55,12 @@ DROP TABLE IF EXISTS `user`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `user` (
-  `userId` int(11) NOT NULL AUTO_INCREMENT,
-  `userName` varchar(45) DEFAULT NULL,
-  `userEmail` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`userId`),
-  UNIQUE KEY `userId_UNIQUE` (`userId`),
-  UNIQUE KEY `userEmail_UNIQUE` (`userEmail`)
+  `user_id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_name` varchar(45) DEFAULT NULL,
+  `user_email` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`user_id`),
+  UNIQUE KEY `user_id_UNIQUE` (`user_id`),
+  UNIQUE KEY `user_email_UNIQUE` (`user_email`)
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 

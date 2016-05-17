@@ -1,8 +1,17 @@
 package com.jedis.entities;
 
 import java.io.Serializable;
-import javax.persistence.*;
 import java.util.List;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 
 /**
@@ -16,14 +25,16 @@ public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int userId;
-
+	
 	private String userEmail;
-
+	
 	private String userName;
 
 	//bi-directional many-to-one association to Data
-	@OneToMany(mappedBy="userBean")
+	@OneToMany(mappedBy="user")
+	@JsonManagedReference
 	private List<Data> data;
 
 	public User() {
@@ -63,14 +74,14 @@ public class User implements Serializable {
 
 	public Data addData(Data data) {
 		getData().add(data);
-		data.setUserBean(this);
+		data.setUser(this);
 
 		return data;
 	}
 
 	public Data removeData(Data data) {
 		getData().remove(data);
-		data.setUserBean(null);
+		data.setUser(null);
 
 		return data;
 	}

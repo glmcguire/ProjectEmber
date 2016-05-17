@@ -1,8 +1,20 @@
 package com.jedis.entities;
 
 import java.io.Serializable;
-import javax.persistence.*;
 import java.util.Date;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 
 /**
@@ -16,6 +28,7 @@ public class Data implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int dataId;
 
 	private byte flag;
@@ -33,7 +46,8 @@ public class Data implements Serializable {
 	//bi-directional many-to-one association to User
 	@ManyToOne
 	@JoinColumn(name="user")
-	private User userBean;
+	@JsonBackReference
+	private User user;
 
 	public Data() {
 	}
@@ -86,12 +100,12 @@ public class Data implements Serializable {
 		this.timeCreated = timeCreated;
 	}
 
-	public User getUserBean() {
-		return this.userBean;
+	public User getUser() {
+		return this.user;
 	}
 
-	public void setUserBean(User userBean) {
-		this.userBean = userBean;
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 }

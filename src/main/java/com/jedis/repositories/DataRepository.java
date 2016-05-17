@@ -13,6 +13,5 @@ import com.jedis.entities.Data;
 
 @Transactional
 public interface DataRepository extends CrudRepository<Data, Long> {
-
-//	public List<Data> findAll();
+	
 }
