@@ -1,6 +1,7 @@
 package com.jedis.controllers;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -39,15 +40,26 @@ public class RedisController {
 	 * all objects in the User table as well as displays the objects within 
 	 * a rest client. 
 	 * 
-	 * @return Iterable<User>
+	 * @return Map<String, String>
 	 */
-	@RequestMapping(value = "/users", method = RequestMethod.GET)
-	public Iterable<User> getUsers() {
+	@RequestMapping(value = "/storeUserTable", method = RequestMethod.GET)
+	public Map<String, String> storeUserTable() {
 		List<User> list = (List<User>) userRep.findAll();
-		for(int i = 0; i < list.size(); i++){
-			JedisUtilities.persistEntry(Integer.toString(i + 1), user, list.get(i).toString(), jedis);
-		}
-		return list;
+		list.forEach(e -> JedisUtilities.persistEntry(String.valueOf(e.getUserId()), user, e.toString(), jedis));
+		return jedis.hgetAll(user);
+	}
+	/**
+	 * Rest mapping that deletes the entire tables cached under the user key. This
+	 * mapping is mainly for jedis testing purposes and most likely would not be
+	 * utilized in a main application unless clearing entire caches is needed. 
+	 * 
+	 * @return Map<String, String>
+	 */
+	@RequestMapping(value = "/deleteUserTable", method = RequestMethod.GET)
+	public Map<String, String> deleteUserCache(){
+		List<User> list = (List<User>) userRep.findAll();
+		list.forEach(i -> JedisUtilities.deleteHEntry(user, String.valueOf(i.getUserId()), jedis));
+		return jedis.hgetAll(user);
 	}
 	
 	

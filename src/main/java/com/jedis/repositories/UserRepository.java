@@ -14,5 +14,9 @@ import com.jedis.entities.User;
  */
 @Transactional
 public interface UserRepository extends CrudRepository<User, Long> {
-
+	
+	// Work in progress.... this may be needed for Spring Caching
+	//	@Override
+	//	@Cacheable("users")
+	//	public List<User> findAll();
 }
